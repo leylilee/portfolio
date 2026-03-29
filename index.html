@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leyli Iskandarli — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F7F5F0;
+    --surface: #FFFFFF;
+    --ink: #1A1814;
+    --ink2: #6B6760;
+    --ink3: #B0ADA8;
+    --accent: #C84B2F;
+    --accent-light: #F5EDE9;
+    --border: rgba(26,24,20,0.1);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 3rem;
+    background: rgba(247,245,240,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--ink2);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── SECTIONS ── */
+  section { padding: 7rem 3rem; max-width: 1100px; margin: 0 auto; }
+
+  /* ── HERO ── */
+  #hero {
+    padding-top: 10rem;
+    padding-bottom: 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px; height: 1px;
+    background: var(--accent);
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.08;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--ink2);
+    max-width: 38ch;
+    margin-bottom: 2.5rem;
+    line-height: 1.75;
+  }
+  .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 0.7rem 1.6rem;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: 1.5px solid var(--accent);
+  }
+  .btn-primary:hover { background: #A83A22; border-color: #A83A22; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--border);
+  }
+  .btn-ghost:hover { border-color: var(--ink); }
+
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    transition: transform 0.2s;
+  }
+  .stat-card:hover { transform: translateX(6px); }
+  .stat-icon {
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--ink3); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 2px; }
+  .stat-val { font-size: 1.05rem; font-weight: 500; color: var(--ink); }
+
+  /* ── SECTION HEADER ── */
+  .section-header { margin-bottom: 3.5rem; }
+  .section-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+
+  /* ── PROJECTS ── */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(26,24,20,0.08);
+  }
+  .project-thumb {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-thumb::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.06));
+  }
+  .project-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.9rem; }
+  .tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+  .project-title {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 0.6rem;
+    color: var(--ink);
+  }
+  .project-desc { font-size: 0.9rem; color: var(--ink2); line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
+  .project-link {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: gap 0.2s;
+  }
+  .project-link:hover { gap: 0.6rem; }
+
+  /* ── RESEARCH ── */
+  .paper-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem 2.25rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+  .paper-card:hover { transform: translateY(-3px); }
+  .paper-card::before {
+    content: '"';
+    position: absolute;
+    top: -0.5rem; right: 1.5rem;
+    font-family: var(--serif);
+    font-size: 8rem;
+    color: var(--accent-light);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .paper-type { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+  .paper-title { font-family: var(--serif); font-size: 1.35rem; font-weight: 400; margin-bottom: 0.75rem; color: var(--ink); line-height: 1.3; }
+  .paper-abstract { font-size: 0.9rem; color: var(--ink2); line-height: 1.7; margin-bottom: 1.5rem; }
+  .paper-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .paper-meta span { font-size: 0.8rem; color: var(--ink3); display: flex; align-items: center; gap: 0.35rem; }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+  .skill-group {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+  }
+  .skill-group-title {
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink2);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-list { list-style: none; }
+  .skill-list li {
+    font-size: 0.9rem;
+    color: var(--ink);
+    padding: 0.3rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .skill-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* ── EXPERIENCE ── */
+  .timeline { position: relative; padding-left: 1.5rem; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 1px;
+    background: var(--border);
+  }
+  .timeline-item { position: relative; margin-bottom: 2.5rem; }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.5rem;
+    top: 8px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    outline: 3px solid var(--bg);
+  }
+  .exp-period {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+  .exp-role {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .exp-org {
+    font-size: 0.88rem;
+    color: var(--ink2);
+    margin-bottom: 0.7rem;
+  }
+  .exp-desc { font-size: 0.9rem; color: var(--ink2); line-height: 1.7; }
+
+  /* ── CONTACT ── */
+  #contact {
+    text-align: center;
+    padding: 6rem 3rem;
+    border-top: 1px solid var(--border);
+  }
+  #contact h2 { margin-bottom: 1rem; }
+  #contact p { color: var(--ink2); max-width: 38ch; margin: 0 auto 2.5rem; }
+  .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem 3rem;
+    font-size: 0.8rem;
+    color: var(--ink3);
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    section { padding: 5rem 1.5rem; }
+    #hero { grid-template-columns: 1fr; padding-top: 8rem; gap: 3rem; }
+    .project-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+  h1 { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-desc { animation: fadeUp 0.6s 0.2s ease both; }
+  .btn-row { animation: fadeUp 0.6s 0.3s ease both; }
+  .hero-visual { animation: fadeUp 0.6s 0.4s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Leyli Iskandarli</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div>
+    <div class="hero-eyebrow">Computer Systems &amp; AI</div>
+    <h1>Building things that <em>matter</em></h1>
+    <p class="hero-desc">
+      I'm a CS student at Riga Technical University, currently on Erasmus+ at the University of Padova. I build web apps, study computer vision, and research distributed systems security.
+    </p>
+    <div class="btn-row">
+      <a href="#projects" class="btn btn-primary">See my work</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="stat-card">
+      <div class="stat-icon">🎓</div>
+      <div>
+        <div class="stat-label">Currently</div>
+        <div class="stat-val">Erasmus+ at UniPD, Italy</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🏛</div>
+      <div>
+        <div class="stat-label">Home university</div>
+        <div class="stat-val">Riga Technical University</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">⭐</div>
+      <div>
+        <div class="stat-label">GPA</div>
+        <div class="stat-val">8.75 / 10</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🌐</div>
+      <div>
+        <div class="stat-label">Languages</div>
+        <div class="stat-val">Azerbaijani · Russian · English · Italian</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <div class="section-tag">Selected work</div>
+    <h2>Projects</h2>
+  </div>
+  <div class="project-grid">
+
+    <div class="project-card">
+      <div class="project-thumb" style="background: #FEF3EE;">📖</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="tag">Next.js</span>
+          <span class="tag">Supabase</span>
+          <span class="tag">Anthropic API</span>
+        </div>
+        <div class="project-title">ReadLey</div>
+        <p class="project-desc">An AI-powered reading application that helps users discover, track, and engage with books. Built with Next.js and Supabase, deployed on Vercel.</p>
+        <a href="#" class="project-link">View project →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb" style="background: #EEF5EE;">🛒</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="tag">React</span>
+          <span class="tag">Vite</span>
+          <span class="tag">PWA</span>
+          <span class="tag">Capacitor</span>
+        </div>
+        <div class="project-title">Grocery Tracker</div>
+        <p class="project-desc">A mobile-friendly grocery management app, converted from a web app to a PWA with native mobile support via Capacitor. Hosted on Vercel.</p>
+        <a href="#" class="project-link">View project →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb" style="background: #EEF0FE;">🖥</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="tag">C++</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">Computer Vision</span>
+        </div>
+        <div class="project-title">CV Labs — UniPD</div>
+        <p class="project-desc">Coursework in computer vision using C++ and OpenCV in a WSL2/Ubuntu environment, covering image processing, feature extraction, and more.</p>
+        <a href="#" class="project-link">View on GitHub →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-header">
+    <div class="section-tag">Academic work</div>
+    <h2>Research</h2>
+  </div>
+  <div class="paper-card">
+    <div class="paper-type">Research Paper · DE10130 – Computer Networks</div>
+    <div class="paper-title">DDoS Attacks and Defense</div>
+    <p class="paper-abstract">
+      An extensive analysis of Distributed Denial of Service attacks and defense mechanisms. Covers the history of DDoS attacks from the 1996 Panix incident to the 2013 Spamhaus attack, classifies the three main attack types (volumetric, protocol-based, and application layer), examines detection methods (signature-based and anomaly-based), and evaluates defense strategies including traffic filtering, firewalls, CDNs with Anycast routing, and anti-DDoS HTTP throttling.
+    </p>
+    <div class="paper-meta">
+      <span>📅 2024/2025</span>
+      <span>🏛 Riga Technical University</span>
+      <span>🔬 Network Security</span>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <div class="section-tag">Technical profile</div>
+    <h2>Skills &amp; tools</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Programming</div>
+      <ul class="skill-list">
+        <li><span class="skill-dot"></span>Python</li>
+        <li><span class="skill-dot"></span>Java</li>
+        <li><span class="skill-dot"></span>HTML &amp; CSS</li>
+        <li><span class="skill-dot"></span>JavaScript</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Frameworks &amp; platforms</div>
+      <ul class="skill-list">
+        <li><span class="skill-dot"></span>React / Next.js</li>
+        <li><span class="skill-dot"></span>Vite</li>
+        <li><span class="skill-dot"></span>Supabase</li>
+        <li><span class="skill-dot"></span>Vercel</li>
+        <li><span class="skill-dot"></span>Git &amp; GitHub</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Tools &amp; platforms</div>
+      <ul class="skill-list">
+        <li><span class="skill-dot"></span>Supabase</li>
+        <li><span class="skill-dot"></span>Vercel</li>
+        <li><span class="skill-dot"></span>Git &amp; GitHub</li>
+        <li><span class="skill-dot"></span>Figma</li>
+        <li><span class="skill-dot"></span>Airtable</li>
+        <li><span class="skill-dot"></span>Notion</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Other</div>
+      <ul class="skill-list">
+        <li><span class="skill-dot"></span>High Performance Computing</li>
+        <li><span class="skill-dot"></span>System Simulation</li>
+        <li><span class="skill-dot"></span>Network Security</li>
+        <li><span class="skill-dot"></span>3D printing &amp; laser cutting</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <div class="section-tag">Background</div>
+    <h2>Experience</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="exp-period">2025 — Present</div>
+      <div class="exp-role">Erasmus+ Exchange Student</div>
+      <div class="exp-org">University of Padova, Italy</div>
+      <p class="exp-desc">Studying Computer Vision (C++ / OpenCV), Probability Theory, and Systems &amp; Models. Actively participating in academic and cultural life in Padova.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="exp-period">2024 — Present</div>
+      <div class="exp-role">Faculty Elder</div>
+      <div class="exp-org">Riga Technical University, Latvia</div>
+      <p class="exp-desc">Student leadership role representing the faculty, organising events and serving as a point of contact between students and university administration.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="exp-period">2024</div>
+      <div class="exp-role">IT &amp; Event Management Intern</div>
+      <div class="exp-org">CeMeWE Project (EU Central Baltic Programme), RTU</div>
+      <p class="exp-desc">Contributed to an EU-funded cross-border programme, supporting IT coordination and event logistics across partner institutions.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="exp-period">2024</div>
+      <div class="exp-role">Maker / Staff</div>
+      <div class="exp-org">theLab Makerspace, RTU</div>
+      <p class="exp-desc">Worked at the university makerspace, supporting hands-on technical projects and assisting students with hardware and prototyping tools.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Let's talk</h2>
+  <p>Open to internships, collaborations, and interesting projects. Feel free to reach out.</p>
+  <div class="contact-links">
+    <a href="mailto:your@email.com" class="btn btn-primary">Email me</a>
+    <a href="https://linkedin.com/in/yourprofile" class="btn btn-ghost" target="_blank">LinkedIn</a>
+    <a href="https://github.com/yourhandle" class="btn btn-ghost" target="_blank">GitHub</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2025 Leyli Iskandarli &mdash; Built with care.
+</footer>
+
+</body>
+</html>
